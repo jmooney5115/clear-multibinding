@@ -52,7 +52,7 @@ namespace ClearMultibinding
 
             // Look for a *public* property with the specified name
             System.Reflection.PropertyInfo pi = type.GetProperty(propertyName);
-            if (pi == null)
+            if (pi == null && propertyName.ToUpper() != "ITEM[]")
             {
                 // There is no matching property - notify the developer
                 string msg = "OnPropertyChanged was invoked with invalid " +
@@ -126,5 +126,39 @@ namespace ClearMultibinding
                 OnPropertyChanged(nameof(Value));
             }
         }
+
+        /*
+         * https://stackoverflow.com/questions/51107133/update-multibinding-on-datagridcell
+         */
+        #region Update MultiBinding Code
+
+        [field: NonSerialized()]
+        private Dictionary<string, object> _memo = new Dictionary<string, object>();
+
+        [field: NonSerialized()]
+        public object this[string key]
+        {
+            get
+            {
+                object o;
+                _memo.TryGetValue(key, out o);
+                return o;
+            }
+        }
+
+        public void UpdateState()
+        {
+            foreach (var prop in GetType().GetProperties())
+            {
+                //properties we can ignore. exception is thrown if not ignore item property
+                if (prop.Name.ToUpper().Equals("ITEM")) continue;
+
+                _memo[prop.Name] = prop.GetValue(this);
+            }
+
+            OnPropertyChanged("Item[]");
+        }
+
+        #endregion
     }
 }

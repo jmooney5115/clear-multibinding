@@ -127,6 +127,7 @@ namespace ClearMultibinding
                 Text2 = "Text Box 2",
                 Text3 = "Text Box 3"
             };
+            TextItem.UpdateState();
 
             Items = new ObservableCollection<Item>();
 
@@ -139,6 +140,8 @@ namespace ClearMultibinding
                     Name = string.Format("Name {0}", i.ToString()),
                     Value = string.Format("Value {0}", i.ToString())
                 });
+
+                Items[i].UpdateState();
             }
         }
 
@@ -149,7 +152,10 @@ namespace ClearMultibinding
         /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            UIHelper.UpdateDataBindings<Control>(this);
+            foreach (var item in Items)
+                item.UpdateState();
+
+            TextItem.UpdateState();
         }
     }
 }

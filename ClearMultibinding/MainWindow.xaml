@@ -20,7 +20,7 @@
             <TextBox.Background>
                 <MultiBinding Converter="{StaticResource BackgroundColorConverter}">
                     <Binding Path="TextItem.Text1" />
-                    <Binding Path="TextItem.Text1" Mode="OneTime" />
+                    <Binding Path="TextItem.[Text1]" />
                 </MultiBinding>
             </TextBox.Background>
 
@@ -30,7 +30,7 @@
             <TextBox.Background>
                 <MultiBinding Converter="{StaticResource BackgroundColorConverter}">
                     <Binding Path="TextItem.Text2" />
-                    <Binding Path="TextItem.Text2" Mode="OneTime" />
+                    <Binding Path="TextItem.[Text2]" />
                 </MultiBinding>
             </TextBox.Background>
 
@@ -40,7 +40,7 @@
             <TextBox.Background>
                 <MultiBinding Converter="{StaticResource BackgroundColorConverter}">
                     <Binding Path="TextItem.Text3" />
-                    <Binding Path="TextItem.Text3" Mode="OneTime" />
+                    <Binding Path="TextItem.[Text3]" />
                 </MultiBinding>
             </TextBox.Background>
 
@@ -61,7 +61,7 @@
                                     <DataTrigger.Binding>
                                         <MultiBinding Converter="{StaticResource BackgroundColorConverterBool}">
                                             <Binding Path="Name"    />
-                                            <Binding Path="Name" Mode="OneTime" />
+                                            <Binding Path="[Name]" />
                                         </MultiBinding>
                                     </DataTrigger.Binding>
 
@@ -81,7 +81,7 @@
                                     <DataTrigger.Binding>
                                         <MultiBinding Converter="{StaticResource BackgroundColorConverterBool}">
                                             <Binding Path="Description"    />
-                                            <Binding Path="Description" Mode="OneTime" />
+                                            <Binding Path="[Description]" />
                                         </MultiBinding>
                                     </DataTrigger.Binding>
 
@@ -101,7 +101,7 @@
                                     <DataTrigger.Binding>
                                         <MultiBinding Converter="{StaticResource BackgroundColorConverterBool}">
                                             <Binding Path="Alias"    />
-                                            <Binding Path="Alias" Mode="OneTime" />
+                                            <Binding Path="[Alias]" />
                                         </MultiBinding>
                                     </DataTrigger.Binding>
 
@@ -121,7 +121,7 @@
                                     <DataTrigger.Binding>
                                         <MultiBinding Converter="{StaticResource BackgroundColorConverterBool}">
                                             <Binding Path="Value"    />
-                                            <Binding Path="Value" Mode="OneTime" />
+                                            <Binding Path="[Value]" />
                                         </MultiBinding>
                                     </DataTrigger.Binding>
 
